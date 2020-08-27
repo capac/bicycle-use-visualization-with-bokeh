@@ -89,5 +89,5 @@ plot_layout = layout([[homepage],
                       [hour_inputs, slider_input, button]])
 
 # attaches layout to current document
-curdoc().add_root(column(plot_layout))
+curdoc().add_root(plot_layout)
 curdoc().title = 'Bicycle Traffic in London UK'
