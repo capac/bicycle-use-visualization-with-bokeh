@@ -13,7 +13,7 @@ from bokeh.io import curdoc
 
 # load data from CSV file
 home = os.environ['HOME']
-data_dir = Path(home) / 'Programming/data/s2ds-project-data'
+data_dir = Path(home) / 'data'
 avg_weekdays_sum_diff_df = pd.read_csv(data_dir /
                                        'avg_weekday_sum_diff_station_name_merc_coord_2019_v2.csv',
                                        index_col='Date')
