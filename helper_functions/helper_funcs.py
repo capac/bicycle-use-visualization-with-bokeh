@@ -2,20 +2,18 @@
 
 from pathlib import Path
 from itertools import islice
-import os
 import pandas as pd
 import numpy as np
 from bokeh.models import ColumnDataSource, Button
 from bokeh.models.widgets import Slider, Select
-from bokeh.layouts import layout, widgetbox
+from bokeh.layouts import widgetbox
 from bokeh.io import curdoc
 
 
 # load data from CSV file
-home = os.environ['HOME']
-data_dir = Path(home) / 'data'
+data_dir = Path('.') / 'data'
 avg_weekdays_sum_diff_df = pd.read_csv(data_dir /
-                                       'avg_weekday_sum_diff_station_name_merc_coord_2019_v2.csv',
+                                       'avg_weekday_sum_diff.csv',
                                        index_col='Date')
 
 
@@ -26,10 +24,6 @@ def station_chunk(it, size):
     return iter(lambda: tuple(islice(it, size)), ())
 
 
-# scale factor for data points in units of hundreds
-scale_factor = 1e0
-
-
 # return a list of dictionaries, each one of which has time as key and
 # a dictionary as value with sum_flux, diff_flux, lat and long values
 def bike_flux(flux_df):
@@ -37,8 +31,8 @@ def bike_flux(flux_df):
     for row in flux_df.itertuples():
         station_name, lat, long, sum_flux, diff_flux = list(
             map(tuple, zip(*station_chunk(row[1:], 5))))
-        sum_flux = np.array(sum_flux)*scale_factor
-        diff_flux = np.array(diff_flux)*scale_factor
+        sum_flux = np.array(sum_flux)
+        diff_flux = np.array(diff_flux)
         bike_flux_list.append(
             {row[0]: {'sum_flux': sum_flux, 'diff_flux': diff_flux,
                       'lat': lat, 'long': long,
@@ -46,11 +40,13 @@ def bike_flux(flux_df):
     # print(bike_flux_list)
     return bike_flux_list
 
+
 # time interval dictionary with hour interval as
 # key and list index for data dictionary as value
 bike_flux_list = bike_flux(avg_weekdays_sum_diff_df)
-time_interval_dict = {time_interval: bike_flux_list.index(interval_data) for interval_data
-                      in bike_flux_list for time_interval in interval_data.keys()}
+time_interval_dict = {time_interval: bike_flux_list.index(interval_data)
+                      for interval_data in bike_flux_list for time_interval
+                      in interval_data.keys()}
 
 
 def select_time():
@@ -114,8 +110,8 @@ flux_slider = Slider(start=0,
                      width=1,
                      align='start',
                      title='Lower limit of total traffic flux')
- # allows scaling before update
-flux_slider.value = flux_slider.value*scale_factor
+# allows scaling before update
+flux_slider.value = flux_slider.value
 flux_slider.on_change('value', lambda attr, old, new: update())
 
 # hourly drop down and minimum flux selector

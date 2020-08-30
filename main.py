@@ -8,7 +8,8 @@ from bokeh.io import curdoc
 from bokeh.core.validation import silence
 from bokeh.core.validation.warnings import MISSING_RENDERERS
 from coordinate_transformation.to_web_merc import toWebMerc
-from helper_functions.helper_funcs import hour_inputs, slider_input, source, update, animate, button
+from helper_functions.helper_funcs import hour_inputs, slider_input, \
+    source, update, button
 
 # silence unnecessary warnings for color_bar_plot
 silence(MISSING_RENDERERS, True)
@@ -67,7 +68,7 @@ color_bar = ColorBar(color_mapper=color_mapper,
 color_bar_plot = figure(title="Net Traffic Flux",
                         title_location="right",
                         height=750,
-                        width=120, 
+                        width=120,
                         toolbar_location=None,
                         min_border=0,
                         outline_line_color=None)
