@@ -4,4 +4,4 @@ I've dedicated some time to build an interactive scatter plot with [Bokeh](https
 
 The data is freely available and can be downloaded from [the public open data web site for TfL](https://cycling.data.tfl.gov.uk/). The CSV file I've used is located in the data folder. Check out the visualization in the link below.
 
-[Data visualization for average weekday public bicycle traffic in London UK using Bokeh - Link to online Bokeh plot on Heroku](https://bicycle-use-with-bokeh.herokuapp.com/main)
+[Data visualization for average weekday public bicycle traffic in London UK using Bokeh](https://bicycle-use-with-bokeh.herokuapp.com/main)
