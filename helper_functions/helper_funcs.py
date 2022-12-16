@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 from bokeh.models import ColumnDataSource, Button
 from bokeh.models.widgets import Slider, Select
-from bokeh.layouts import widgetbox
+from bokeh.layouts import grid
 from bokeh.io import curdoc
 
 
@@ -115,8 +115,8 @@ flux_slider.value = flux_slider.value
 flux_slider.on_change('value', lambda attr, old, new: update())
 
 # hourly drop down and minimum flux selector
-hour_inputs = widgetbox(hour_interval_selector, sizing_mode='scale_width')
-slider_input = widgetbox(flux_slider, sizing_mode='scale_width')
+hour_inputs = grid(hour_interval_selector, sizing_mode='scale_width')
+slider_input = grid(flux_slider, sizing_mode='scale_width')
 
 # video time lapse button
 button = Button(label='► Play',
