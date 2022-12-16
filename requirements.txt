@@ -1,4 +1,4 @@
-bokeh
-pyproj
-pandas
-numpy
+bokeh >= 3
+pyproj >= 3
+numpy >=1.11.3
+pandas >=1.2
