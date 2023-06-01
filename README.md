@@ -13,3 +13,5 @@ The plot can be animated by a play button which displays the activty over a 24 h
 The data is freely available and can be downloaded from [the public open data web site for TfL](https://cycling.data.tfl.gov.uk/). The CSV file I've created is located in the data folder. Check out the visualization at the link below.
 
 [Data visualization for average weekday public bicycle traffic in London UK using Bokeh](https://bicycle-use-with-bokeh.herokuapp.com/main)
+
+UPDATE (2023-03-27): Due to the closure of the free-tier Heroku hosting for the Bokeh web app I had created, the link above doesn’t work anymore. The code however still works locally with Bokeh and the proper dependecnies. You are more than welcome to try running it on your computer.
